@@ -263,14 +263,18 @@ h6 {
 
 .post {
 
-  .post-header {
-    margin-bottom: 3rem;
-  }
-
   .post-date {
     display: block;
     margin: $std-margin;
     text-align: right;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+  }
+
+  .post-description {
+    font-size: larger;
   }
 }
 

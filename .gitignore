@@ -2,3 +2,4 @@
 /exampleSite/public
 /exampleSite/themes
 .DS_Store
+.sass-cache

@@ -185,12 +185,14 @@ h6 {
       .posts time + a {
         margin-left: 2rem; } }
 
-.post .post-header {
-  margin-bottom: 3rem; }
 .post .post-date {
   display: block;
   margin: 0 0 1rem;
   text-align: right; }
+.post .post-header {
+  margin-bottom: 3rem; }
+.post .post-description {
+  font-size: larger; }
 
 .hljs {
   font-size: .875rem; }
