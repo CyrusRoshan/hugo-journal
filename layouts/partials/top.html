@@ -3,66 +3,62 @@
 
   <head>
     <meta charset="utf-8">
-    {{ .Hugo.Generator }}
+    {{ if and (not .IsHome) (.Site.Params.nocrawl) }}
+      <meta name="robots" content="noindex">
+    {{ end }}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{ .Site.Author.name }}">
     <meta property="og:url" content="{{ .Permalink }}">
 
-    {{ if .IsHome -}}
+    {{ if .IsHome }}
     <title>{{ .Site.Title }}</title>
     <meta property="og:title" content="{{ .Site.Title }}">
     <meta property="og:type" content="website">
     <meta name="description" content="{{ .Site.Params.description }}">
-    {{- else -}}
+    {{ else }}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
     <meta property="og:type" content="article">
     <meta name="description" content="{{ .Description }}">
-    {{- end }}
+    {{ end }}
 
     <link rel="stylesheet" href="{{ "css/highlight.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/journal.css" | relURL }}">
     <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
     <link rel="icon" type="image/png" href="{{ "/favicon.png" }}" sizes="32x32">
 
-    {{ if and (not .IsHome) (.Params.latex) }}
-      <!-- Loading mathjax macro -->
-      <!-- Load mathjax -->
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-      <!-- MathJax configuration -->
-      <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-              tex2jax: {
-                  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                  processEscapes: true,
-                  processEnvironments: true
-              },
-              // Center justify equations in code and markdown cells. Elsewhere
-              // we use CSS to left justify single line equations in code cells.
-              displayAlign: 'center',
-              "HTML-CSS": {
-                  styles: {'.MathJax_Display': {"margin": 0}},
-                  linebreaks: { automatic: true }
-              }
-          });
-          </script>
-      <!-- End of mathjax configuration -->
-    {{- end}}
+    {{ if .Params.latex }}
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+      </script>
+    {{ end }}
   </head>
 
   <body>
     <div class="container">
 
-      {{ if .IsHome -}}
+      {{ if .IsHome }}
       <header class="site-header">
         <h1>{{ .Site.Title }}</h1>
         <p>{{ .Site.Params.tagline }}</p>
       </header>
-      {{- else -}}
+      {{ else }}
       <nav class="site-nav">
         <a href="{{ .Site.BaseURL }}">Index</a>
       </nav>
-      {{- end }}
+      {{ end }}
