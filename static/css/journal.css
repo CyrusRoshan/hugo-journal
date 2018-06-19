@@ -8,7 +8,7 @@
 html {
   background-color: #fbfbfb;
   color: #303030;
-  font-family: "Times New Roman", serif;
+  font-family: -apple-system, Helvetica, Arial, sans-serif;
   font-size: 1rem;
 }
 @media screen and (min-width: 800px) {
@@ -26,12 +26,26 @@ body {
   margin: 0;
 }
 
+header {
+  margin-bottom: 30px;
+}
+header .post-title-background {
+  background-color: #1d1d1d;
+  padding: 20px 20px;
+}
+header .post-title-background h1 {
+  padding: 10px 0;
+  display: inline;
+  position: relative;
+  color: whitesmoke;
+}
+
 h1,
 p,
 figure,
 pre,
 blockquote {
-  margin: 0 0 1rem;
+  margin: 1em 0 0 0;
 }
 
 hr {
@@ -141,34 +155,6 @@ h1 {
   font-size: 1.875rem;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 0.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
 .container {
   width: 100%;
   max-width: 38rem;
@@ -179,15 +165,6 @@ h6 {
   .container {
     padding: 1rem 0;
   }
-}
-
-.site-header,
-.site-nav {
-  margin-bottom: 2rem;
-}
-.site-header h1,
-.site-nav h1 {
-  margin-bottom: 0.5rem;
 }
 
 .site-nav a::before {
@@ -240,11 +217,8 @@ h6 {
 
 .post .post-date {
   display: block;
-  margin: 0 0 1rem;
+  margin: 1em 0 0 0;
   text-align: right;
-}
-.post .post-header {
-  margin-bottom: 3rem;
 }
 .post .post-description {
   font-size: larger;

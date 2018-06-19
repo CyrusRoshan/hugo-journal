@@ -2,11 +2,11 @@ $black: #303030;
 $gray: #686868;
 $light-gray: #e5e5e5;
 $white: #fbfbfb;
-$serif: "Times New Roman";
+$font: -apple-system, Helvetica, Arial, sans-serif;
 $monospace: "Source Code Pro";
 $fs: 1rem;
 $fs-large: 1.125rem;
-$std-margin: 0 0 1rem;
+$std-margin: 1em 0 0 0;
 $break-small: 800px;
 
 *,
@@ -20,7 +20,7 @@ html {
 
   color: $black;
 
-  font-family: $serif, serif;
+  font-family: $font;
   font-size: $fs;
 
   @media screen and (min-width: $break-small) {
@@ -35,6 +35,22 @@ body {
 html,
 body {
   margin: 0;
+}
+
+header {
+  .post-title-background {
+    background-color: rgb(29, 29, 29);
+    padding: 20px 20px;
+
+    h1 {
+      padding: 10px 0;
+      display: inline;
+      position: relative;
+      color: rgb(245, 245, 245); 
+    }
+  }
+
+  margin-bottom: 30px;
 }
 
 h1,
@@ -160,34 +176,6 @@ h1 {
   font-size: 1.875rem;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 .5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
 .container {
   width: 100%;
   max-width: 38rem;
@@ -196,15 +184,6 @@ h6 {
 
   @media screen and (min-width: $break-small) {
     padding: 1rem 0;
-  }
-}
-
-.site-header,
-.site-nav {
-  margin-bottom: 2rem;
-
-  h1 {
-    margin-bottom: .5rem;
   }
 }
 
@@ -260,15 +239,10 @@ h6 {
 }
 
 .post {
-
   .post-date {
     display: block;
     margin: $std-margin;
     text-align: right;
-  }
-
-  .post-header {
-    margin-bottom: 3rem;
   }
 
   .post-description {
