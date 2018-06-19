@@ -213,6 +213,7 @@ h1 {
   }
 
   li {
+    display: flex;
     margin-bottom: .5rem;
 
     @media screen and (min-width: $break-small) {
@@ -222,18 +223,11 @@ h1 {
   }
 
   time {
-    display: block;
+    margin-right: 1em;
+    flex-shrink: 0;
 
     @media screen and (min-width: $break-small) {
       flex: 0 0 5rem;
-    }
-
-    + a {
-      margin-left: 1rem;
-
-      @media screen and (min-width: $break-small) {
-        margin-left: 2rem;
-      }
     }
   }
 }
