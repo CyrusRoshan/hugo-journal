@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sass scss/journal.scss static/css/journal.css
+sass --watch --no-source-map -s compressed scss:static/css

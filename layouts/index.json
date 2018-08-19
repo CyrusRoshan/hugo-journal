@@ -1,4 +1,5 @@
 [{{ range $index, $page := first 10 .Site.Pages }}
+{{- if not $page.Params.hidden -}}
 {{- if ne $page.Type "json" -}}
 {{- if and $index (gt $index 0) -}},{{- end }}
 {
@@ -7,5 +8,6 @@
 	"tags": [{{ range $tindex, $tag := $page.Params.tags }}{{ if $tindex }}, {{ end }}"{{ $tag| htmlEscape }}"{{ end }}]
 	{{/* "description": "{{ htmlEscape .Description}}" */}}
 }
+{{- end -}}
 {{- end -}}
 {{- end -}}]
