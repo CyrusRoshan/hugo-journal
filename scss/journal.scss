@@ -23,7 +23,7 @@ html {
   font-family: $font;
   font-size: $fs;
 
-  @media screen and (min-width: $break-small) {
+  @media screen and (max-width: $break-small) {
     font-size: $fs-large;
   }
 }
@@ -46,7 +46,7 @@ header {
       padding: 10px 0;
       display: inline;
       position: relative;
-      color: rgb(245, 245, 245); 
+      color: rgb(245, 245, 245);
     }
   }
 
@@ -113,12 +113,11 @@ blockquote {
 }
 
 a {
-  border-bottom: 1px solid currentColor;
   color: currentColor;
-  text-decoration: none;
+  text-decoration: underline;
+  font-weight: 600;
 
   &:hover {
-    border-bottom-color: currentColor;
     color: $black;
   }
 }
@@ -186,8 +185,10 @@ h1 {
   margin: 0 auto;
   padding: 3rem;
 
-  @media screen and (min-width: $break-small) {
-    padding: 1rem 0;
+  // To provide space for the favorite icon
+  @media screen and (max-width: $break-small) {
+    padding-left: 4em;
+    padding-right: 2em;
   }
 }
 
@@ -203,10 +204,6 @@ h1 {
   [itemprop="sameAs"] + [itemprop="sameAs"] {
     margin-left: .4rem;
   }
-
-  @media screen and (min-width: $break-small) {
-    margin-bottom: .5rem;
-  }
 }
 
 .posts {
@@ -219,10 +216,24 @@ h1 {
   li {
     display: flex;
     margin-bottom: .5rem;
+    position: relative; // For the favorite icon to latch onto
 
-    @media screen and (min-width: $break-small) {
+    @media screen and (max-width: $break-small) {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      margin-bottom: 1em;
+    }
+  }
+
+  .favoriteIcon {
+    position: absolute;
+    left: -27px;
+    top: -1px;
+
+    @media screen and (max-width: $break-small) {
+      font-size: 25px;
+      left: -35px;
+      top: -11px;
     }
   }
 
@@ -230,8 +241,9 @@ h1 {
     margin-right: 1em;
     flex-shrink: 0;
 
-    @media screen and (min-width: $break-small) {
-      flex: 0 0 5rem;
+    @media screen and (max-width: $break-small) {
+      font-size: .7rem;
+      font-weight: 600;
     }
   }
 }
