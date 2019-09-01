@@ -244,13 +244,15 @@ h1 {
 
   .favoriteIcon {
     position: absolute;
-    left: -27px;
-    top: -1px;
+
+    font-size: 12px;
+    left: -20px;
+    top: 3px;
 
     @include media("mobile") {
+      font-size: 10px;
       left: -15px;
       top: 2px;
-      font-size: 10px;
     }
   }
 
