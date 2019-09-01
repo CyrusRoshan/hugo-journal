@@ -15,6 +15,25 @@ $break-small: 800px;
   box-sizing: border-box;
 }
 
+@function translate-media-condition($c) {
+  $condMap: (
+    "mobile": "screen and (max-width: #{$break-small})",
+  );
+  @return map-get( $condMap, $c );
+}
+
+@mixin media($args...) {
+  $query: "";
+  @each $arg in $args {
+    $op: "";
+    @if ( $query != "" ) {
+      $op: " and ";
+    }
+    $query: $query + $op + translate-media-condition($arg);
+  }
+  @media #{$query} { @content; }
+}
+
 html {
   background-color: $white;
 
@@ -23,7 +42,7 @@ html {
   font-family: $font;
   font-size: $fs;
 
-  @media screen and (max-width: $break-small) {
+  @include media("mobile") {
     font-size: $fs-large;
   }
 }
@@ -44,10 +63,15 @@ header {
 
     h1 {
       padding: 10px 0;
+      padding-bottom: 0;
       display: inline;
       position: relative;
       color: rgb(245, 245, 245);
     }
+  }
+
+  p {
+    margin-top: 0.25em;
   }
 
   margin-bottom: 30px;
@@ -69,7 +93,6 @@ hr {
 
   border: 0;
   border-top: 1px solid $gray;
-
 }
 
 figure {
@@ -184,12 +207,6 @@ h1 {
   max-width: 38rem;
   margin: 0 auto;
   padding: 3rem;
-
-  // To provide space for the favorite icon
-  @media screen and (max-width: $break-small) {
-    padding-left: 4em;
-    padding-right: 2em;
-  }
 }
 
 .site-nav a::before {
@@ -218,7 +235,7 @@ h1 {
     margin-bottom: .5rem;
     position: relative; // For the favorite icon to latch onto
 
-    @media screen and (max-width: $break-small) {
+    @include media("mobile") {
       display: flex;
       flex-direction: column;
       margin-bottom: 1em;
@@ -230,9 +247,10 @@ h1 {
     left: -27px;
     top: -1px;
 
-    @media screen and (max-width: $break-small) {
-      left: -30px;
-      top: -5px;
+    @include media("mobile") {
+      left: -15px;
+      top: 2px;
+      font-size: 10px;
     }
   }
 
@@ -240,7 +258,7 @@ h1 {
     margin-right: 1em;
     flex-shrink: 0;
 
-    @media screen and (max-width: $break-small) {
+    @include media("mobile") {
       font-size: .7rem;
       font-weight: 600;
     }
