@@ -1,27 +1,27 @@
 {{ partial "top.html" . }}
 
-  <article class="posts">
+<article class="posts">
 
-    {{ range where ((where .Data.Pages "Type" "post").GroupByDate "2006") "Key" "!=" "0000" }}
-    <section>
-      <h2>{{ .Key }}</h2>
+  {{ range where ((where .Data.Pages "Type" "post").GroupByDate "2006") "Key" "!=" "0000" }}
+  <section>
+    <h2>{{ .Key }}</h2>
 
-      <ol>
-        {{ range $index, $page := .Pages -}}
-          {{- if not $page.Params.hidden -}}
-            <li>
-              {{- if $page.Params.favorited -}}
-              <div class="favoriteIcon">★</div>
-              {{- end -}}
-              <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </li>
-          {{- end }}
+    <ol>
+      {{ range $index, $page := .Pages -}}
+        {{- if not $page.Params.hidden -}}
+          <li>
+            {{- if $page.Params.favorited -}}
+            <div class="favoriteIcon">★</div>
+            {{- end -}}
+            <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </li>
         {{- end }}
-      </ol>
-    </section>
-    {{ end }}
+      {{- end }}
+    </ol>
+  </section>
+  {{ end }}
 
-  </article>
+</article>
 
 {{ partial "bottom.html" . }}
