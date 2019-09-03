@@ -1,5 +1,10 @@
 {{ partial "top.html" . }}
 
+<header class="site-header">
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.tagline }}</p>
+</header>
+
 <article class="posts">
 
   {{ range where ((where .Data.Pages "Type" "post").GroupByDate "2006") "Key" "!=" "0000" }}

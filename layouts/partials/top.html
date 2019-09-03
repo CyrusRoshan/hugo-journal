@@ -50,14 +50,9 @@
   </head>
 
   <body>
-    <div class="container {{ if .IsHome }}homepage{{ end }}">
+    <div class="container {{ if .IsPage }}page{{ else }}homepage{{ end }}">
 
-      {{ if .IsHome }}
-      <header class="site-header">
-        <h1>{{ .Site.Title }}</h1>
-        <p>{{ .Site.Params.tagline }}</p>
-      </header>
-      {{ else }}
+      {{ if .IsPage }}
       <nav class="site-nav">
         <a href="{{ .Site.BaseURL }}">Index</a>
       </nav>
